@@ -15,6 +15,7 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const photoCollage = document.querySelector("#photo-collage");
 const gallery = document.querySelector("#gallery");
+const aboutProfile = document.querySelector("#about-profile");
 
 let collections = [];
 let photos = [];
@@ -55,8 +56,8 @@ function renderProfile(profile) {
   setText("[data-profile='name']", profile.name);
   setText("[data-profile='displayName']", profile.displayName || profile.name);
   setText("[data-profile='shortIntro']", profile.shortIntro);
-  renderParagraphs("#biography", profile.biography);
-  renderLinks("#contact-links", profile.contactLinks || []);
+  renderAboutProfile(profile);
+  renderLinks("#contact-links", profile.contactLinks || profile.links || []);
 }
 
 function setText(selector, value) {
@@ -65,14 +66,61 @@ function setText(selector, value) {
   });
 }
 
-function renderParagraphs(selector, paragraphs) {
-  const container = document.querySelector(selector);
-  container.innerHTML = "";
-  (paragraphs || []).forEach((text) => {
-    const paragraph = document.createElement("p");
-    paragraph.textContent = text;
-    container.appendChild(paragraph);
-  });
+function renderAboutProfile(profile) {
+  if (!aboutProfile) return;
+
+  const themes = profile.photographyThemes || [];
+  const facts = profile.quickFacts || [];
+  const links = profile.links || profile.contactLinks || [];
+  const cvPath = profile.cvPath || "";
+  const portrait = profile.portrait || "";
+  const location = profile.location || "Chicago";
+
+  aboutProfile.innerHTML = `
+    <aside class="portrait-panel" aria-label="Portrait and quick facts">
+      <figure class="portrait-card">
+        <div class="portrait-frame">
+          ${portrait ? `<img src="${escapeAttribute(portrait)}" alt="${escapeAttribute(profile.displayName || profile.name || "Portrait")}">` : ""}
+          <span class="portrait-placeholder"${portrait ? " hidden" : ""}>YZ</span>
+        </div>
+        <figcaption>${escapeHTML(`Based in ${location}`)}</figcaption>
+      </figure>
+      <div class="quick-facts" aria-label="Quick facts">
+        ${facts.map((fact) => `<span>${escapeHTML(fact)}</span>`).join("")}
+      </div>
+    </aside>
+    <div class="intro-content">
+      <div class="prose intro-copy">
+        <p>${escapeHTML(profile.intro || (profile.biography && profile.biography[0]) || "")}</p>
+        <p>${escapeHTML(profile.photographyStatement || (profile.biography && profile.biography[1]) || "")}</p>
+      </div>
+      <div class="theme-grid" aria-label="Photography themes">
+        ${themes.map((theme) => `
+          <article class="theme-card">
+            <h3>${escapeHTML(theme.title || "")}</h3>
+            <p>${escapeHTML(theme.description || "")}</p>
+          </article>
+        `).join("")}
+      </div>
+      <div class="intro-actions">
+        ${cvPath ? `<a class="button primary" href="${escapeAttribute(cvPath)}">CV</a>` : ""}
+        ${links.map((link) => `
+          <a class="button ghost" href="${escapeAttribute(link.url || "#")}"${(link.url || "").startsWith("http") ? " target=\"_blank\" rel=\"noopener noreferrer\"" : ""}>
+            ${escapeHTML(link.label || "Link")}
+          </a>
+        `).join("")}
+      </div>
+    </div>
+  `;
+
+  const portraitImage = aboutProfile.querySelector(".portrait-frame img");
+  const portraitPlaceholder = aboutProfile.querySelector(".portrait-placeholder");
+  if (portraitImage && portraitPlaceholder) {
+    portraitImage.addEventListener("error", () => {
+      portraitImage.remove();
+      portraitPlaceholder.hidden = false;
+    });
+  }
 }
 
 function renderLinks(selector, links) {
@@ -116,7 +164,7 @@ function getContactIcon(label) {
     `;
   }
 
-  if (label.includes("小红书")) {
+  if (normalized.includes("xiaohongshu") || normalized.includes("red")) {
     return `<span class="xhs-icon">RED</span>`;
   }
 
@@ -236,4 +284,8 @@ function escapeHTML(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function escapeAttribute(value) {
+  return escapeHTML(value).replaceAll("`", "&#096;");
 }

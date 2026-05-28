@@ -1,10 +1,59 @@
 {
   "name": "Yuze Zheng",
   "displayName": "Yuze Zheng",
-  "shortIntro": "I use photography to document wildlife, city life, light, color, and quiet moments around Chicago.",
+  "location": "Chicago",
+  "title": "PhD Candidate in Chemistry",
+  "affiliation": "University of Chicago",
+  "portrait": "assets/profile/portrait.jpg",
+  "intro": "Yuze Zheng is a photographer based in Chicago. His work focuses on wildlife, city life, natural light, and quiet visual details found in everyday surroundings.",
+  "photographyStatement": "Alongside his photography, he is a PhD candidate in Chemistry at the University of Chicago, where his academic work shapes his attention to materials, interfaces, structure, and observation.",
+  "shortIntro": "Photography from Chicago: wildlife, birds, city life, landscapes, light, and quiet everyday moments.",
   "biography": [
-    "Yuze Zheng is a photographer based in Chicago. His work focuses on wildlife, urban landscapes, street scenes, and the quiet visual details of everyday life.",
-    "This website is a place to collect and share photographs, field notes, and small observations from walks around the city and nearby natural spaces."
+    "Yuze Zheng is a photographer based in Chicago. His work focuses on wildlife, city life, natural light, and quiet visual details found in everyday surroundings.",
+    "Alongside his photography, he is a PhD candidate in Chemistry at the University of Chicago, where his academic work shapes his attention to materials, interfaces, structure, and observation."
+  ],
+  "photographyThemes": [
+    {
+      "title": "Birds & Wildlife",
+      "description": "Encounters with birds, animals, and natural spaces in and around Chicago."
+    },
+    {
+      "title": "City & Street",
+      "description": "Urban scenes, architecture, reflections, and everyday movement."
+    },
+    {
+      "title": "Landscape & Light",
+      "description": "Open views, weather, water, sunrise, sunset, and atmosphere."
+    },
+    {
+      "title": "Quiet Details",
+      "description": "Small moments that are easy to miss but visually meaningful."
+    }
+  ],
+  "quickFacts": [
+    "Chicago",
+    "Wildlife",
+    "Birds",
+    "City Life",
+    "Landscape",
+    "Light",
+    "Everyday Moments",
+    "University of Chicago"
+  ],
+  "cvPath": "assets/cv/Yuze_Zheng_CV.pdf",
+  "links": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/yuze.zheng.cn?igsh=MWxvNzcwNDl4bjc5aA%3D%3D&utm_source=qr"
+    },
+    {
+      "label": "Xiaohongshu",
+      "url": "https://xhslink.com/m/9btzDLYQNqe"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:yuze.zheng.cn@gmail.com"
+    }
   ],
   "contactLinks": [
     {
@@ -12,7 +61,7 @@
       "url": "https://www.instagram.com/yuze.zheng.cn?igsh=MWxvNzcwNDl4bjc5aA%3D%3D&utm_source=qr"
     },
     {
-      "label": "小红书",
+      "label": "Xiaohongshu",
       "url": "https://xhslink.com/m/9btzDLYQNqe"
     },
     {
