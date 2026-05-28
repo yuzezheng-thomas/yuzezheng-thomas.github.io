@@ -1,63 +1,10 @@
 {
   "name": "Yuze Zheng",
-  "displayName": "Yuze Zheng / Thomas",
-  "title": "PhD Candidate in Chemistry",
-  "affiliation": "University of Chicago",
-  "shortIntro": "I work on bioelectronics, optoelectronic neuromodulation, and semiconductor-biology interfaces. Outside the lab, I use photography to document wildlife, city life, and quiet moments around Chicago.",
+  "displayName": "Yuze Zheng",
+  "shortIntro": "I use photography to document wildlife, city life, light, color, and quiet moments around Chicago.",
   "biography": [
-    "Yuze Zheng is a PhD candidate in Chemistry at the University of Chicago. His research focuses on functional interfaces between optoelectronic materials and biological systems.",
-    "His work explores bioelectronics, optoelectronic neuromodulation, and semiconductor-biology interfaces, with an emphasis on how materials, interfaces, and light-driven processes can be used to communicate with living systems.",
-    "Outside the lab, he photographs wildlife, urban landscapes, and everyday scenes around Chicago."
-  ],
-  "researchInterests": [
-    "Bioelectronics",
-    "Optoelectronic neuromodulation",
-    "Semiconductor-biology interfaces",
-    "Plasmonic materials",
-    "Functional biointerfaces"
-  ],
-  "selectedResearchDirections": [
-    {
-      "title": "Optoelectronic biointerfaces",
-      "description": "Light-addressable materials and devices for interacting with biological systems."
-    },
-    {
-      "title": "Semiconductor-biology interfaces",
-      "description": "Functional interfaces that bridge inorganic materials and living systems."
-    },
-    {
-      "title": "Plasmonic materials",
-      "description": "Nanostructured optical materials for controlling light-driven interfacial processes."
-    }
-  ],
-  "education": [
-    {
-      "degree": "PhD Candidate in Chemistry",
-      "institution": "University of Chicago",
-      "location": "Chicago, IL",
-      "year": "Present"
-    }
-  ],
-  "personalInterests": [
-    "Wildlife photography",
-    "Urban landscapes",
-    "Birdwatching",
-    "Chicago city life"
-  ],
-  "cvPath": "assets/cv/Yuze_Zheng_CV.pdf",
-  "academicLinks": [
-    {
-      "label": "Google Scholar",
-      "url": "#"
-    },
-    {
-      "label": "ORCID",
-      "url": "#"
-    },
-    {
-      "label": "GitHub",
-      "url": "#"
-    }
+    "Yuze Zheng is a photographer based in Chicago. His work focuses on wildlife, urban landscapes, street scenes, and the quiet visual details of everyday life.",
+    "This website is a place to collect and share photographs, field notes, and small observations from walks around the city and nearby natural spaces."
   ],
   "contactLinks": [
     {
@@ -65,11 +12,11 @@
       "url": "mailto:your-email@example.com"
     },
     {
-      "label": "LinkedIn",
+      "label": "Instagram / Photography",
       "url": "#"
     },
     {
-      "label": "Instagram / Photography",
+      "label": "LinkedIn",
       "url": "#"
     }
   ]

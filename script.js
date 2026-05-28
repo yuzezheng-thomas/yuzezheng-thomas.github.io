@@ -1,7 +1,7 @@
-// Personal information is edited in data/profile.json.
+// Personal text is edited in data/profile.json.
 // Photo gallery entries are edited in data/photos.json.
 // Photo files go in assets/photos/.
-// CV files go in assets/cv/.
+// CV files can still go in assets/cv/ if needed later.
 // index.html should rarely need to be edited after setup.
 
 const profilePath = "data/profile.json";
@@ -9,6 +9,7 @@ const photosPath = "data/photos.json";
 
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
+const featuredPhotos = document.querySelector("#featured-photos");
 const gallery = document.querySelector("#gallery");
 const filters = document.querySelector("#photo-filters");
 const lightbox = document.querySelector("#lightbox");
@@ -54,21 +55,9 @@ async function loadProfile() {
 function renderProfile(profile) {
   setText("[data-profile='name']", profile.name);
   setText("[data-profile='displayName']", profile.displayName || profile.name);
-  setText("[data-profile='title']", profile.title);
-  setText("[data-profile='affiliation']", profile.affiliation);
   setText("[data-profile='shortIntro']", profile.shortIntro);
-
   renderParagraphs("#biography", profile.biography);
-  renderList("#about-interests", profile.researchInterests, "tag");
-  renderList("#cv-interests", profile.researchInterests, "tag");
-  renderList("#personal-interests", profile.personalInterests, "plain");
-  renderEducation(profile.education || []);
-  renderDirections(profile.selectedResearchDirections || []);
-  renderLinks("#academic-links", profile.academicLinks || []);
   renderLinks("#contact-links", profile.contactLinks || []);
-
-  const cvButton = document.querySelector("#cv-download");
-  cvButton.href = profile.cvPath || "assets/cv/Yuze_Zheng_CV.pdf";
 }
 
 function setText(selector, value) {
@@ -84,46 +73,6 @@ function renderParagraphs(selector, paragraphs) {
     const paragraph = document.createElement("p");
     paragraph.textContent = text;
     container.appendChild(paragraph);
-  });
-}
-
-function renderList(selector, items, type) {
-  const list = document.querySelector(selector);
-  list.innerHTML = "";
-  (items || []).forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    if (type === "plain") li.className = "plain-item";
-    list.appendChild(li);
-  });
-}
-
-function renderEducation(items) {
-  const container = document.querySelector("#education-list");
-  container.innerHTML = "";
-  items.forEach((item) => {
-    const article = document.createElement("div");
-    article.className = "education-item";
-    article.innerHTML = `
-      <strong>${escapeHTML(item.degree || "")}</strong>
-      <p>${escapeHTML(item.institution || "")}</p>
-      <p>${escapeHTML([item.location, item.year].filter(Boolean).join(" | "))}</p>
-    `;
-    container.appendChild(article);
-  });
-}
-
-function renderDirections(items) {
-  const container = document.querySelector("#research-directions");
-  container.innerHTML = "";
-  items.forEach((item) => {
-    const article = document.createElement("div");
-    article.className = "direction";
-    article.innerHTML = `
-      <strong>${escapeHTML(item.title || "")}</strong>
-      <p>${escapeHTML(item.description || "")}</p>
-    `;
-    container.appendChild(article);
   });
 }
 
@@ -147,12 +96,48 @@ async function loadPhotos() {
     const response = await fetch(photosPath);
     if (!response.ok) throw new Error("Photo file could not be loaded.");
     photos = await response.json();
+    renderFeaturedPhotos(photos.slice(0, 3));
     renderFilters(photos);
     renderGallery(photos);
   } catch (error) {
     console.error(error);
     gallery.innerHTML = "<p class='photo-fallback'>Photo gallery information could not be loaded.</p>";
   }
+}
+
+function renderFeaturedPhotos(items) {
+  featuredPhotos.innerHTML = "";
+
+  if (!items.length) {
+    featuredPhotos.innerHTML = "<div class='photo-fallback'>Add photos in data/photos.json to fill this space.</div>";
+    return;
+  }
+
+  items.forEach((photo) => {
+    const button = document.createElement("button");
+    button.className = "featured-card";
+    button.type = "button";
+    button.addEventListener("click", () => openLightbox(photo));
+
+    const image = document.createElement("img");
+    image.src = photo.image || "";
+    image.alt = photo.title || "Featured photograph";
+    image.loading = "lazy";
+    image.addEventListener("error", () => {
+      image.remove();
+      button.insertAdjacentHTML("afterbegin", `<span class="photo-fallback">${escapeHTML(photo.title || "Photo")}<br>Image coming soon</span>`);
+    });
+
+    const label = document.createElement("span");
+    label.className = "featured-label";
+    label.innerHTML = `
+      <strong>${escapeHTML(photo.title || "Untitled")}</strong>
+      <span>${escapeHTML([photo.location, photo.year].filter(Boolean).join(" | "))}</span>
+    `;
+
+    button.append(image, label);
+    featuredPhotos.appendChild(button);
+  });
 }
 
 function renderFilters(items) {

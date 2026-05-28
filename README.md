@@ -1,20 +1,21 @@
-# Yuze Zheng Personal Website
+# Yuze Zheng Photography Website
 
-This is a simple static personal website for GitHub Pages. It uses only HTML, CSS, and JavaScript. There is no React, no backend, no database, and no build step.
+This is a simple static photography website for GitHub Pages. It uses only HTML, CSS, and JavaScript. There is no React, no backend, no database, and no build step.
 
 Most updates should happen in these places:
 
 - `data/profile.json`
 - `data/photos.json`
 - `assets/photos/`
-- `assets/cv/`
 
-## Update Personal Profile Text
+## Update Personal Text
 
 1. Open `data/profile.json`.
-2. Edit fields such as `shortIntro`, `biography`, `researchInterests`, `education`, `selectedResearchDirections`, and links.
+2. Edit `displayName`, `shortIntro`, `biography`, or `contactLinks`.
 3. Commit changes.
 4. GitHub Pages updates automatically.
+
+The homepage and About section both load text from `data/profile.json`.
 
 ## Update Photos
 
@@ -37,7 +38,7 @@ Each photo entry should look like this:
 }
 ```
 
-Filter buttons are generated automatically from the `category` fields in `data/photos.json`.
+The homepage featured-photo area uses the first three entries in `data/photos.json`. The full gallery and filter buttons are generated automatically from the same file.
 
 ## Recommended Photo Export Settings
 
@@ -45,19 +46,6 @@ Filter buttons are generated automatically from the `category` fields in `data/p
 - Long edge: 1600-2400 px
 - Quality: 75-85%
 - Ideally 300 KB-1 MB per image
-
-## Replace the CV
-
-1. Put the PDF file in `assets/cv/`.
-2. Update `cvPath` in `data/profile.json` if the filename changes.
-
-The default path is:
-
-```text
-assets/cv/Yuze_Zheng_CV.pdf
-```
-
-The CV download button will still appear even before the PDF is uploaded.
 
 ## GitHub Pages Notes
 
