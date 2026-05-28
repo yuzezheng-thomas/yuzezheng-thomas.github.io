@@ -5,30 +5,12 @@
   "title": "PhD Candidate in Chemistry",
   "affiliation": "University of Chicago",
   "portrait": "assets/profile/portrait.jpg",
-  "intro": "Yuze Zheng is a photographer based in Chicago. His work focuses on wildlife, city life, natural light, and quiet visual details found in everyday surroundings.",
-  "photographyStatement": "Alongside his photography, he is a PhD candidate in Chemistry at the University of Chicago, where his academic work shapes his attention to materials, interfaces, structure, and observation.",
+  "intro": "I photograph wildlife, birds, city life, landscapes, light, and quiet everyday moments around Chicago.",
+  "photographyStatement": "Alongside photography, I am a PhD candidate in Chemistry at the University of Chicago. That academic work stays secondary here, but it shapes how I look at structure, surfaces, light, and small changes in the world around me.",
   "shortIntro": "Photography from Chicago: wildlife, birds, city life, landscapes, light, and quiet everyday moments.",
   "biography": [
     "Yuze Zheng is a photographer based in Chicago. His work focuses on wildlife, city life, natural light, and quiet visual details found in everyday surroundings.",
-    "Alongside his photography, he is a PhD candidate in Chemistry at the University of Chicago, where his academic work shapes his attention to materials, interfaces, structure, and observation."
-  ],
-  "photographyThemes": [
-    {
-      "title": "Birds & Wildlife",
-      "description": "Encounters with birds, animals, and natural spaces in and around Chicago."
-    },
-    {
-      "title": "City & Street",
-      "description": "Urban scenes, architecture, reflections, and everyday movement."
-    },
-    {
-      "title": "Landscape & Light",
-      "description": "Open views, weather, water, sunrise, sunset, and atmosphere."
-    },
-    {
-      "title": "Quiet Details",
-      "description": "Small moments that are easy to miss but visually meaningful."
-    }
+    "Alongside photography, he is a PhD candidate in Chemistry at the University of Chicago. That academic work stays secondary here, but it shapes how he looks at structure, surfaces, light, and small changes in the world around him."
   ],
   "quickFacts": [
     "Chicago",
@@ -41,32 +23,22 @@
     "University of Chicago"
   ],
   "cvPath": "assets/cv/Yuze_Zheng_CV.pdf",
-  "links": [
-    {
-      "label": "Instagram",
-      "url": "https://www.instagram.com/yuze.zheng.cn?igsh=MWxvNzcwNDl4bjc5aA%3D%3D&utm_source=qr"
-    },
-    {
-      "label": "Xiaohongshu",
-      "url": "https://xhslink.com/m/9btzDLYQNqe"
-    },
-    {
-      "label": "Email",
-      "url": "mailto:yuze.zheng.cn@gmail.com"
-    }
-  ],
   "contactLinks": [
     {
+      "label": "Email",
+      "url": "mailto:yuze.zheng.cn@gmail.com"
+    },
+    {
       "label": "Instagram",
       "url": "https://www.instagram.com/yuze.zheng.cn?igsh=MWxvNzcwNDl4bjc5aA%3D%3D&utm_source=qr"
     },
     {
-      "label": "Xiaohongshu",
-      "url": "https://xhslink.com/m/9btzDLYQNqe"
+      "label": "CV",
+      "url": "assets/cv/Yuze_Zheng_CV.pdf"
     },
     {
-      "label": "Email",
-      "url": "mailto:yuze.zheng.cn@gmail.com"
+      "label": "GitHub",
+      "url": "https://github.com/yuzezheng-thomas"
     }
   ]
 }

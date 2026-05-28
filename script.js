@@ -69,9 +69,7 @@ function setText(selector, value) {
 function renderAboutProfile(profile) {
   if (!aboutProfile) return;
 
-  const themes = profile.photographyThemes || [];
   const facts = profile.quickFacts || [];
-  const links = profile.links || profile.contactLinks || [];
   const cvPath = profile.cvPath || "";
   const portrait = profile.portrait || "";
   const location = profile.location || "Chicago";
@@ -90,25 +88,17 @@ function renderAboutProfile(profile) {
       </div>
     </aside>
     <div class="intro-content">
+      <div class="intro-kicker">
+        <p class="eyebrow">Based in ${escapeHTML(location)}</p>
+        <h3>${escapeHTML(profile.displayName || profile.name || "Yuze Zheng")}</h3>
+        <p>${escapeHTML([profile.title, profile.affiliation].filter(Boolean).join(", "))}</p>
+      </div>
       <div class="prose intro-copy">
         <p>${escapeHTML(profile.intro || (profile.biography && profile.biography[0]) || "")}</p>
         <p>${escapeHTML(profile.photographyStatement || (profile.biography && profile.biography[1]) || "")}</p>
       </div>
-      <div class="theme-grid" aria-label="Photography themes">
-        ${themes.map((theme) => `
-          <article class="theme-card">
-            <h3>${escapeHTML(theme.title || "")}</h3>
-            <p>${escapeHTML(theme.description || "")}</p>
-          </article>
-        `).join("")}
-      </div>
       <div class="intro-actions">
-        ${cvPath ? `<a class="button primary" href="${escapeAttribute(cvPath)}">CV</a>` : ""}
-        ${links.map((link) => `
-          <a class="button ghost" href="${escapeAttribute(link.url || "#")}"${(link.url || "").startsWith("http") ? " target=\"_blank\" rel=\"noopener noreferrer\"" : ""}>
-            ${escapeHTML(link.label || "Link")}
-          </a>
-        `).join("")}
+        ${cvPath ? `<a class="button primary" href="${escapeAttribute(cvPath)}">View CV</a>` : ""}
       </div>
     </div>
   `;
@@ -160,6 +150,15 @@ function getContactIcon(label) {
       <svg viewBox="0 0 24 24" role="img">
         <rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
         <path d="M4.5 7.5 12 13l7.5-5.5"></path>
+      </svg>
+    `;
+  }
+
+  if (normalized.includes("github")) {
+    return `
+      <svg viewBox="0 0 24 24" role="img">
+        <path d="M9 19c-4 1.2-4-2-5.5-2.5"></path>
+        <path d="M15 22v-3.6c0-1 .1-1.4-.5-2 2.7-.3 5.5-1.3 5.5-6A4.6 4.6 0 0 0 18.7 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.3 1.2a11.4 11.4 0 0 0-6 0C7 3.5 6 3.8 6 3.8A4.3 4.3 0 0 0 5.9 7 4.6 4.6 0 0 0 4.6 10.4c0 4.7 2.8 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"></path>
       </svg>
     `;
   }
@@ -257,7 +256,7 @@ function renderCollectionCards(items) {
     const body = document.createElement("div");
     body.className = "collection-card-body";
     body.innerHTML = `
-      <p class="photo-meta">${escapeHTML(collection.theme || "Photo collection")} | ${collectionPhotos.length} ${collectionPhotos.length === 1 ? "photo" : "photos"}</p>
+      <p class="photo-meta">${collectionPhotos.length} ${collectionPhotos.length === 1 ? "photo" : "photos"} · Collection</p>
       <h3>${escapeHTML(collection.title || "Untitled")}</h3>
       <p>${escapeHTML(collection.description || "")}</p>
       <span class="view-collection">View Collection</span>
