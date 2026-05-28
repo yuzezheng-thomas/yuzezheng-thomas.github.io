@@ -1,0 +1,34 @@
+[
+  {
+    "image": "assets/photos/landscape/lake-michigan-sunrise.jpg",
+    "alt": "Lake Michigan sunrise"
+  },
+  {
+    "image": "assets/photos/city/sun-through-city.jpg",
+    "alt": "Sunlight through downtown Chicago"
+  },
+  {
+    "image": "assets/photos/wildlife/lion-portrait.jpg",
+    "alt": "Lion portrait"
+  },
+  {
+    "image": "assets/photos/birds/american-robin.jpg",
+    "alt": "American robin in grass"
+  },
+  {
+    "image": "assets/photos/city/chicago-theatre-night.jpg",
+    "alt": "Chicago Theatre at night"
+  },
+  {
+    "image": "assets/photos/birds/cardinal-i.jpg",
+    "alt": "Cardinal on winter branches"
+  },
+  {
+    "image": "assets/photos/wildlife/bear-at-rock-wall.jpg",
+    "alt": "Bear by a rock wall"
+  },
+  {
+    "image": "assets/photos/city/cloud-gate-night.jpg",
+    "alt": "Cloud Gate at night"
+  }
+]

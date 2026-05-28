@@ -1,6 +1,7 @@
 // Personal text is edited in data/profile.json.
 // Collection cards are edited in data/collections.json.
 // Photo entries are edited in data/photos.json.
+// Homepage collage entries are edited in data/featuredPhotos.json.
 // Photo files go in collection folders under assets/photos/.
 // index.html should rarely need to be edited after setup.
 
@@ -8,10 +9,11 @@ const cacheKey = Date.now();
 const profilePath = `data/profile.json?v=${cacheKey}`;
 const collectionsPath = `data/collections.json?v=${cacheKey}`;
 const photosPath = `data/photos.json?v=${cacheKey}`;
+const featuredPhotosPath = `data/featuredPhotos.json?v=${cacheKey}`;
 
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
-const featuredPhotos = document.querySelector("#featured-photos");
+const photoCollage = document.querySelector("#photo-collage");
 const gallery = document.querySelector("#gallery");
 
 let collections = [];
@@ -20,6 +22,7 @@ let photos = [];
 document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
   loadProfile();
+  loadFeaturedPhotos();
   loadPortfolioData();
 });
 
@@ -132,7 +135,6 @@ async function loadPortfolioData() {
 
     collections = await collectionsResponse.json();
     photos = await photosResponse.json();
-    renderFeaturedCollections(collections.slice(0, 3));
     renderCollectionCards(collections);
   } catch (error) {
     console.error(error);
@@ -140,56 +142,41 @@ async function loadPortfolioData() {
   }
 }
 
-function renderFeaturedCollections(items) {
-  featuredPhotos.innerHTML = "";
+async function loadFeaturedPhotos() {
+  try {
+    const response = await fetch(featuredPhotosPath);
+    if (!response.ok) throw new Error("Featured photos file could not be loaded.");
+    const items = await response.json();
+    renderPhotoCollage(items);
+  } catch (error) {
+    console.error(error);
+    photoCollage.innerHTML = "<div class='collage-fallback'>Featured photos coming soon</div>";
+  }
+}
 
+function renderPhotoCollage(items) {
+  photoCollage.innerHTML = "";
   if (!items.length) {
-    featuredPhotos.innerHTML = "<div class='photo-fallback'>Add collections in data/collections.json to fill this space.</div>";
+    photoCollage.innerHTML = "<div class='collage-fallback'>Add featured photos in data/featuredPhotos.json</div>";
     return;
   }
 
-  const cover = items[0];
-  const notes = items.slice(1);
-  const coverImage = getCollectionCover(cover);
+  items.forEach((item, index) => {
+    const figure = document.createElement("figure");
+    figure.className = `collage-tile tile-${(index % 8) + 1}`;
 
-  const coverLink = document.createElement("a");
-  coverLink.className = "featured-cover";
-  coverLink.href = `collection.html?collection=${encodeURIComponent(cover.slug)}`;
+    const image = document.createElement("img");
+    image.src = item.image || "";
+    image.alt = item.alt || "Featured photograph";
+    image.loading = index < 4 ? "eager" : "lazy";
+    image.addEventListener("error", () => {
+      figure.innerHTML = `<span>${escapeHTML(item.alt || "Photo coming soon")}</span>`;
+      figure.classList.add("missing-image");
+    });
 
-  const image = document.createElement("img");
-  image.src = coverImage;
-  image.alt = cover.title || "Featured collection";
-  image.loading = "lazy";
-  image.addEventListener("error", () => {
-    image.remove();
-    coverLink.classList.add("missing-image");
+    figure.appendChild(image);
+    photoCollage.appendChild(figure);
   });
-
-  coverLink.innerHTML = `
-    <span class="featured-kicker">Collection</span>
-    <span class="featured-title">${escapeHTML(cover.title || "Untitled")}</span>
-    <span class="featured-meta">${escapeHTML(cover.description || "")}</span>
-  `;
-  coverLink.prepend(image);
-
-  const notePanel = document.createElement("div");
-  notePanel.className = "featured-notes";
-  notePanel.innerHTML = `
-    <p class="note-label">Albums</p>
-    <div class="note-list">
-      ${notes.map((collection) => `
-        <a class="note-item" href="collection.html?collection=${encodeURIComponent(collection.slug)}">
-          <strong>${escapeHTML(collection.title || "Untitled")}</strong>
-          <span>${escapeHTML(collection.description || "")}</span>
-        </a>
-      `).join("")}
-    </div>
-    <div class="category-strip">
-      ${collections.slice(0, 4).map((collection) => `<span>${escapeHTML(collection.title)}</span>`).join("")}
-    </div>
-  `;
-
-  featuredPhotos.append(coverLink, notePanel);
 }
 
 function renderCollectionCards(items) {

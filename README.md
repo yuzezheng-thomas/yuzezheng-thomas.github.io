@@ -5,6 +5,7 @@ This is a simple static photography portfolio for GitHub Pages. It uses only HTM
 Most updates should happen in these places:
 
 - `data/profile.json`
+- `data/featuredPhotos.json`
 - `data/collections.json`
 - `data/photos.json`
 - `assets/photos/`
@@ -40,6 +41,21 @@ The collection link is generated automatically:
 ```text
 collection.html?collection=travel
 ```
+
+## Update The Homepage Collage
+
+The first screen is controlled by `data/featuredPhotos.json`.
+
+Add or reorder entries to change the homepage photo mosaic:
+
+```json
+{
+  "image": "assets/photos/city/sun-through-city.jpg",
+  "alt": "Sunlight through downtown Chicago"
+}
+```
+
+These entries only affect the homepage collage. They do not create collections or photo detail pages.
 
 ## Add Photos To A Collection
 
