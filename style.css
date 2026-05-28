@@ -362,7 +362,7 @@ h3 {
 .portrait-frame {
   display: grid;
   place-items: center;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background:
     linear-gradient(135deg, rgba(255, 92, 53, 0.14), rgba(0, 127, 140, 0.16)),
