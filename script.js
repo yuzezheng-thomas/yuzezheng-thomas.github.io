@@ -4,8 +4,9 @@
 // CV files can still go in assets/cv/ if needed later.
 // index.html should rarely need to be edited after setup.
 
-const profilePath = "data/profile.json";
-const photosPath = "data/photos.json";
+const cacheKey = Date.now();
+const profilePath = `data/profile.json?v=${cacheKey}`;
+const photosPath = `data/photos.json?v=${cacheKey}`;
 
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
@@ -146,31 +147,54 @@ function renderFeaturedPhotos(items) {
     return;
   }
 
-  items.forEach((photo) => {
-    const button = document.createElement("button");
-    button.className = "featured-card";
-    button.type = "button";
-    button.addEventListener("click", () => openLightbox(photo));
+  const cover = items[0];
+  const notes = items.slice(1);
+  const categories = [...new Set(photos.map((photo) => photo.category).filter(Boolean))];
 
-    const image = document.createElement("img");
-    image.src = photo.image || "";
-    image.alt = photo.title || "Featured photograph";
-    image.loading = "lazy";
-    image.addEventListener("error", () => {
-      image.remove();
-      button.insertAdjacentHTML("afterbegin", `<span class="photo-fallback">${escapeHTML(photo.title || "Photo")}<br>Image coming soon</span>`);
-    });
+  const coverButton = document.createElement("button");
+  coverButton.className = "featured-cover";
+  coverButton.type = "button";
+  coverButton.addEventListener("click", () => openLightbox(cover));
 
-    const label = document.createElement("span");
-    label.className = "featured-label";
-    label.innerHTML = `
-      <strong>${escapeHTML(photo.title || "Untitled")}</strong>
-      <span>${escapeHTML([photo.location, photo.year].filter(Boolean).join(" | "))}</span>
-    `;
-
-    button.append(image, label);
-    featuredPhotos.appendChild(button);
+  const image = document.createElement("img");
+  image.src = cover.image || "";
+  image.alt = cover.title || "Featured photograph";
+  image.loading = "lazy";
+  image.addEventListener("error", () => {
+    image.remove();
+    coverButton.classList.add("missing-image");
   });
+
+  coverButton.innerHTML = `
+    <span class="featured-kicker">${escapeHTML(cover.category || "Photo")}</span>
+    <span class="featured-title">${escapeHTML(cover.title || "Untitled")}</span>
+    <span class="featured-meta">${escapeHTML([cover.location, cover.year].filter(Boolean).join(" | "))}</span>
+  `;
+  coverButton.prepend(image);
+
+  const notePanel = document.createElement("div");
+  notePanel.className = "featured-notes";
+  notePanel.innerHTML = `
+    <p class="note-label">On the roll</p>
+    <div class="note-list">
+      ${notes.map((photo) => `
+        <button class="note-item" type="button" data-index="${notes.indexOf(photo)}">
+          <strong>${escapeHTML(photo.title || "Untitled")}</strong>
+          <span>${escapeHTML([photo.category, photo.location].filter(Boolean).join(" | "))}</span>
+        </button>
+      `).join("")}
+    </div>
+    <div class="category-strip">
+      ${categories.slice(0, 4).map((category) => `<span>${escapeHTML(category)}</span>`).join("")}
+    </div>
+  `;
+
+  notePanel.querySelectorAll(".note-item").forEach((button) => {
+    const photo = notes[Number(button.dataset.index)];
+    if (photo) button.addEventListener("click", () => openLightbox(photo));
+  });
+
+  featuredPhotos.append(coverButton, notePanel);
 }
 
 function renderFilters(items) {
