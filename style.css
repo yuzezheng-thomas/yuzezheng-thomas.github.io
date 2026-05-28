@@ -461,14 +461,58 @@ h3 {
   gap: 10px;
 }
 
-.contact-links a {
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 46px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
   color: var(--accent-two);
-  padding: 9px 12px;
+  padding: 9px 14px;
   font-weight: 750;
   text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px rgba(255, 92, 53, 0.16);
+  transform: translateY(-1px);
+}
+
+.contact-icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+}
+
+.contact-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.xhs-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #ff2442;
+  color: #ffffff;
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0;
 }
 
 .lightbox {

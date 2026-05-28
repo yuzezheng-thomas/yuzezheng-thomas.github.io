@@ -82,13 +82,46 @@ function renderLinks(selector, links) {
   links.forEach((link) => {
     const anchor = document.createElement("a");
     anchor.href = link.url || "#";
-    anchor.textContent = link.label || "Link";
+    anchor.className = "contact-link";
+    anchor.innerHTML = `
+      <span class="contact-icon" aria-hidden="true">${getContactIcon(link.label || "")}</span>
+      <span>${escapeHTML(link.label || "Link")}</span>
+    `;
     if ((link.url || "").startsWith("http")) {
       anchor.target = "_blank";
       anchor.rel = "noopener noreferrer";
     }
     container.appendChild(anchor);
   });
+}
+
+function getContactIcon(label) {
+  const normalized = label.toLowerCase();
+
+  if (normalized.includes("instagram")) {
+    return `
+      <svg viewBox="0 0 24 24" role="img">
+        <rect x="4" y="4" width="16" height="16" rx="5"></rect>
+        <circle cx="12" cy="12" r="3.5"></circle>
+        <circle cx="16.8" cy="7.2" r="1"></circle>
+      </svg>
+    `;
+  }
+
+  if (normalized.includes("email") || normalized.includes("mail")) {
+    return `
+      <svg viewBox="0 0 24 24" role="img">
+        <rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
+        <path d="M4.5 7.5 12 13l7.5-5.5"></path>
+      </svg>
+    `;
+  }
+
+  if (label.includes("小红书")) {
+    return `<span class="xhs-icon">RED</span>`;
+  }
+
+  return `<span class="xhs-icon">LINK</span>`;
 }
 
 async function loadPhotos() {

@@ -8,16 +8,16 @@
   ],
   "contactLinks": [
     {
+      "label": "Instagram",
+      "url": "#"
+    },
+    {
+      "label": "小红书",
+      "url": "https://xhslink.com/m/9btzDLYQNqe"
+    },
+    {
       "label": "Email",
-      "url": "mailto:your-email@example.com"
-    },
-    {
-      "label": "Instagram / Photography",
-      "url": "#"
-    },
-    {
-      "label": "LinkedIn",
-      "url": "#"
+      "url": "mailto:yuze.zheng.cn@gmail.com"
     }
   ]
 }
