@@ -235,7 +235,9 @@ function renderGallery(items) {
     const button = document.createElement("button");
     button.className = "photo-button";
     button.type = "button";
-    button.addEventListener("click", () => openLightbox(photo));
+    button.addEventListener("click", () => {
+      window.location.href = `collection.html?photo=${photos.indexOf(photo)}`;
+    });
 
     const media = document.createElement("div");
     media.className = "photo-media";

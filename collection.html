@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Photography collection by Yuze Zheng.">
+    <title>Photography Collection | Yuze Zheng</title>
+    <link rel="stylesheet" href="style.css?v=20260528-collection">
+  </head>
+  <body class="collection-page">
+    <!-- Collection pages are generated from data/photos.json.
+      Add photo files to assets/photos/ and update data/photos.json.
+    -->
+    <header class="site-header">
+      <nav class="nav" aria-label="Collection navigation">
+        <a class="brand" href="index.html#home">Yuze Zheng</a>
+        <div class="collection-links">
+          <a href="index.html#photography">Gallery</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="collection-hero section">
+        <a class="back-link" href="index.html#photography">Back to Gallery</a>
+        <div class="collection-layout">
+          <div class="collection-image" id="collection-image"></div>
+          <aside class="collection-info">
+            <p class="eyebrow" id="collection-category">Photography</p>
+            <h1 id="collection-title">Collection</h1>
+            <p class="collection-meta" id="collection-meta"></p>
+            <p class="collection-caption" id="collection-caption"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section collection-strip-section">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Collection</p>
+            <h2 id="related-title">Related Frames</h2>
+          </div>
+          <a class="button ghost" href="index.html#photography">All Photos</a>
+        </div>
+        <div class="collection-grid" id="collection-grid"></div>
+      </section>
+    </main>
+
+    <script src="collection.js?v=20260528-collection"></script>
+  </body>
+</html>
