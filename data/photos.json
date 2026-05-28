@@ -97,19 +97,19 @@
   },
   {
     "collection": "birds",
-    "title": "Branch Study I",
+    "title": "Warbler",
     "location": "Chicago, IL",
     "year": "2026",
-    "caption": "A small bird balanced among branches.",
-    "image": "assets/photos/birds/branch-study-i.jpg"
+    "caption": "A small warbler balanced among branches.",
+    "image": "assets/photos/birds/warbler.jpg"
   },
   {
     "collection": "birds",
-    "title": "Branch Study II",
+    "title": "Warbler II",
     "location": "Chicago, IL",
     "year": "2026",
-    "caption": "A second quiet frame from the same walk.",
-    "image": "assets/photos/birds/branch-study-ii.jpg"
+    "caption": "A second quiet frame of a warbler from the same walk.",
+    "image": "assets/photos/birds/warbler_ii.jpg"
   },
   {
     "collection": "birds",

@@ -163,7 +163,7 @@ function getContactIcon(label) {
     `;
   }
 
-  if (normalized.includes("xiaohongshu") || normalized.includes("red")) {
+  if (normalized.includes("xiaohongshu") || normalized.includes("小红书") || normalized.includes("red")) {
     return `<span class="xhs-icon">RED</span>`;
   }
 
