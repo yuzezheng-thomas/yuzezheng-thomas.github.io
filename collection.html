@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Photography collection by Yuze Zheng.">
     <title>Photography Collection | Yuze Zheng</title>
-    <link rel="stylesheet" href="style.css?v=20260528-collection">
+    <link rel="stylesheet" href="style.css?v=20260528-albums">
   </head>
   <body class="collection-page">
-    <!-- Collection pages are generated from data/photos.json.
-      Add photo files to assets/photos/ and update data/photos.json.
+    <!-- Collection pages are generated from data/collections.json and data/photos.json.
+      Add photo files under assets/photos/<collection>/ and update JSON data files.
     -->
     <header class="site-header">
       <nav class="nav" aria-label="Collection navigation">
@@ -24,13 +24,13 @@
     <main>
       <section class="collection-hero section">
         <a class="back-link" href="index.html#photography">Back to Gallery</a>
-        <div class="collection-layout">
-          <div class="collection-image" id="collection-image"></div>
+        <div class="collection-layout" id="collection-layout">
+          <div class="collection-image" id="collection-cover"></div>
           <aside class="collection-info">
-            <p class="eyebrow" id="collection-category">Photography</p>
+            <p class="eyebrow" id="collection-theme">Photography</p>
             <h1 id="collection-title">Collection</h1>
-            <p class="collection-meta" id="collection-meta"></p>
-            <p class="collection-caption" id="collection-caption"></p>
+            <p class="collection-meta" id="collection-count"></p>
+            <p class="collection-caption" id="collection-description"></p>
           </aside>
         </div>
       </section>
@@ -38,15 +38,27 @@
       <section class="section collection-strip-section">
         <div class="section-heading split">
           <div>
-            <p class="eyebrow">Collection</p>
-            <h2 id="related-title">Related Frames</h2>
+            <p class="eyebrow">Photos</p>
+            <h2 id="related-title">Collection</h2>
           </div>
-          <a class="button ghost" href="index.html#photography">All Photos</a>
+          <a class="button ghost" href="index.html#photography">All Collections</a>
         </div>
         <div class="collection-grid" id="collection-grid"></div>
       </section>
     </main>
 
-    <script src="collection.js?v=20260528-collection"></script>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" hidden>
+      <button class="lightbox-close" type="button" aria-label="Close photo preview">&times;</button>
+      <div class="lightbox-content">
+        <img id="lightbox-image" alt="">
+        <div class="lightbox-caption">
+          <h3 id="lightbox-title"></h3>
+          <p id="lightbox-meta"></p>
+          <p id="lightbox-text"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="collection.js?v=20260528-albums"></script>
   </body>
 </html>

@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "landscape",
+    "title": "Landscape",
+    "description": "Light, weather, and open views from Chicago and beyond.",
+    "theme": "Lake, sky, weather",
+    "coverImage": "assets/photos/landscape/lake-michigan-sunrise.jpg"
+  },
+  {
+    "slug": "city",
+    "title": "City",
+    "description": "Urban scenes, architecture, and everyday light in Chicago.",
+    "theme": "Chicago streets and skyline",
+    "coverImage": "assets/photos/city/sun-through-city.jpg"
+  },
+  {
+    "slug": "wildlife",
+    "title": "Wildlife",
+    "description": "Wildlife and animal portraits from parks, zoos, and nature walks.",
+    "theme": "Animal portraits",
+    "coverImage": "assets/photos/wildlife/lion-portrait.jpg"
+  },
+  {
+    "slug": "birds",
+    "title": "Birds",
+    "description": "Bird photography from Chicago parks and nearby nature areas.",
+    "theme": "Parks and bird walks",
+    "coverImage": "assets/photos/birds/american-robin.jpg"
+  }
+]

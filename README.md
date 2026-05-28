@@ -1,10 +1,11 @@
 # Yuze Zheng Photography Website
 
-This is a simple static photography website for GitHub Pages. It uses only HTML, CSS, and JavaScript. There is no React, no backend, no database, and no build step.
+This is a simple static photography portfolio for GitHub Pages. It uses only HTML, CSS, and JavaScript. There is no React, no backend, no database, and no build step.
 
 Most updates should happen in these places:
 
 - `data/profile.json`
+- `data/collections.json`
 - `data/photos.json`
 - `assets/photos/`
 
@@ -15,30 +16,58 @@ Most updates should happen in these places:
 3. Commit changes.
 4. GitHub Pages updates automatically.
 
-The homepage and About section both load text from `data/profile.json`.
+## Add A New Collection
 
-## Update Photos
+1. Create a folder under `assets/photos/`, for example `assets/photos/travel/`.
+2. Add one entry to `data/collections.json`.
+3. Choose a stable lowercase `slug`, such as `travel`.
+4. Set `coverImage` to the image that should represent the collection.
 
-1. Export and compress the photo.
-2. Upload the photo to `assets/photos/`.
-3. Add one entry to `data/photos.json`.
-4. Commit changes.
-5. GitHub Pages updates automatically.
-
-Each photo entry should look like this:
+Example:
 
 ```json
 {
-  "title": "Photo Title",
-  "location": "Location",
-  "year": "2026",
-  "category": "Birds",
-  "caption": "Short caption here.",
-  "image": "assets/photos/photo-01.jpg"
+  "slug": "travel",
+  "title": "Travel",
+  "description": "Photographs from trips and places beyond Chicago.",
+  "theme": "Travel notes",
+  "coverImage": "assets/photos/travel/cover.jpg"
 }
 ```
 
-The homepage featured-photo area uses the first three entries in `data/photos.json`. The full gallery and filter buttons are generated automatically from the same file.
+The collection link is generated automatically:
+
+```text
+collection.html?collection=travel
+```
+
+## Add Photos To A Collection
+
+1. Export and compress the photo.
+2. Upload the photo to the relevant folder, such as `assets/photos/birds/`.
+3. Add one entry to `data/photos.json`.
+4. Make sure the `collection` value matches a `slug` in `data/collections.json`.
+5. Commit changes.
+6. GitHub Pages updates automatically.
+
+Example:
+
+```json
+{
+  "collection": "birds",
+  "title": "American Robin",
+  "location": "Chicago, IL",
+  "year": "2026",
+  "caption": "A robin moving through low grass in soft light.",
+  "image": "assets/photos/birds/american-robin.jpg"
+}
+```
+
+## Choose A Cover Image
+
+Each collection card uses `coverImage` from `data/collections.json`.
+
+If `coverImage` is empty or missing, the site uses the first photo in `data/photos.json` whose `collection` value matches the collection `slug`.
 
 ## Recommended Photo Export Settings
 
@@ -49,4 +78,4 @@ The homepage featured-photo area uses the first three entries in `data/photos.js
 
 ## GitHub Pages Notes
 
-Keep paths relative, such as `assets/photos/photo-01.jpg` and `data/profile.json`. This allows the site to work directly from the repository `yuzezheng-thomas.github.io`.
+Keep paths relative, such as `assets/photos/birds/american-robin.jpg` and `data/photos.json`. This allows the site to work directly from the repository `yuzezheng-thomas.github.io`.

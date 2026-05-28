@@ -1,31 +1,26 @@
 // Personal text is edited in data/profile.json.
-// Photo gallery entries are edited in data/photos.json.
-// Photo files go in assets/photos/.
-// CV files can still go in assets/cv/ if needed later.
+// Collection cards are edited in data/collections.json.
+// Photo entries are edited in data/photos.json.
+// Photo files go in collection folders under assets/photos/.
 // index.html should rarely need to be edited after setup.
 
 const cacheKey = Date.now();
 const profilePath = `data/profile.json?v=${cacheKey}`;
+const collectionsPath = `data/collections.json?v=${cacheKey}`;
 const photosPath = `data/photos.json?v=${cacheKey}`;
 
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const featuredPhotos = document.querySelector("#featured-photos");
 const gallery = document.querySelector("#gallery");
-const filters = document.querySelector("#photo-filters");
-const lightbox = document.querySelector("#lightbox");
-const lightboxImage = document.querySelector("#lightbox-image");
-const lightboxTitle = document.querySelector("#lightbox-title");
-const lightboxMeta = document.querySelector("#lightbox-meta");
-const lightboxText = document.querySelector("#lightbox-text");
-const lightboxClose = document.querySelector(".lightbox-close");
 
+let collections = [];
 let photos = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
   loadProfile();
-  loadPhotos();
+  loadPortfolioData();
 });
 
 function setupNavigation() {
@@ -125,171 +120,127 @@ function getContactIcon(label) {
   return `<span class="xhs-icon">LINK</span>`;
 }
 
-async function loadPhotos() {
+async function loadPortfolioData() {
   try {
-    const response = await fetch(photosPath);
-    if (!response.ok) throw new Error("Photo file could not be loaded.");
-    photos = await response.json();
-    renderFeaturedPhotos(photos.slice(0, 3));
-    renderFilters(photos);
-    renderGallery(photos);
+    const [collectionsResponse, photosResponse] = await Promise.all([
+      fetch(collectionsPath),
+      fetch(photosPath)
+    ]);
+
+    if (!collectionsResponse.ok) throw new Error("Collections file could not be loaded.");
+    if (!photosResponse.ok) throw new Error("Photo file could not be loaded.");
+
+    collections = await collectionsResponse.json();
+    photos = await photosResponse.json();
+    renderFeaturedCollections(collections.slice(0, 3));
+    renderCollectionCards(collections);
   } catch (error) {
     console.error(error);
-    gallery.innerHTML = "<p class='photo-fallback'>Photo gallery information could not be loaded.</p>";
+    gallery.innerHTML = "<p class='photo-fallback'>Collections could not be loaded.</p>";
   }
 }
 
-function renderFeaturedPhotos(items) {
+function renderFeaturedCollections(items) {
   featuredPhotos.innerHTML = "";
 
   if (!items.length) {
-    featuredPhotos.innerHTML = "<div class='photo-fallback'>Add photos in data/photos.json to fill this space.</div>";
+    featuredPhotos.innerHTML = "<div class='photo-fallback'>Add collections in data/collections.json to fill this space.</div>";
     return;
   }
 
   const cover = items[0];
   const notes = items.slice(1);
-  const categories = [...new Set(photos.map((photo) => photo.category).filter(Boolean))];
+  const coverImage = getCollectionCover(cover);
 
-  const coverButton = document.createElement("button");
-  coverButton.className = "featured-cover";
-  coverButton.type = "button";
-  coverButton.addEventListener("click", () => openLightbox(cover));
+  const coverLink = document.createElement("a");
+  coverLink.className = "featured-cover";
+  coverLink.href = `collection.html?collection=${encodeURIComponent(cover.slug)}`;
 
   const image = document.createElement("img");
-  image.src = cover.image || "";
-  image.alt = cover.title || "Featured photograph";
+  image.src = coverImage;
+  image.alt = cover.title || "Featured collection";
   image.loading = "lazy";
   image.addEventListener("error", () => {
     image.remove();
-    coverButton.classList.add("missing-image");
+    coverLink.classList.add("missing-image");
   });
 
-  coverButton.innerHTML = `
-    <span class="featured-kicker">${escapeHTML(cover.category || "Photo")}</span>
+  coverLink.innerHTML = `
+    <span class="featured-kicker">Collection</span>
     <span class="featured-title">${escapeHTML(cover.title || "Untitled")}</span>
-    <span class="featured-meta">${escapeHTML([cover.location, cover.year].filter(Boolean).join(" | "))}</span>
+    <span class="featured-meta">${escapeHTML(cover.description || "")}</span>
   `;
-  coverButton.prepend(image);
+  coverLink.prepend(image);
 
   const notePanel = document.createElement("div");
   notePanel.className = "featured-notes";
   notePanel.innerHTML = `
-    <p class="note-label">On the roll</p>
+    <p class="note-label">Albums</p>
     <div class="note-list">
-      ${notes.map((photo) => `
-        <button class="note-item" type="button" data-index="${notes.indexOf(photo)}">
-          <strong>${escapeHTML(photo.title || "Untitled")}</strong>
-          <span>${escapeHTML([photo.category, photo.location].filter(Boolean).join(" | "))}</span>
-        </button>
+      ${notes.map((collection) => `
+        <a class="note-item" href="collection.html?collection=${encodeURIComponent(collection.slug)}">
+          <strong>${escapeHTML(collection.title || "Untitled")}</strong>
+          <span>${escapeHTML(collection.description || "")}</span>
+        </a>
       `).join("")}
     </div>
     <div class="category-strip">
-      ${categories.slice(0, 4).map((category) => `<span>${escapeHTML(category)}</span>`).join("")}
+      ${collections.slice(0, 4).map((collection) => `<span>${escapeHTML(collection.title)}</span>`).join("")}
     </div>
   `;
 
-  notePanel.querySelectorAll(".note-item").forEach((button) => {
-    const photo = notes[Number(button.dataset.index)];
-    if (photo) button.addEventListener("click", () => openLightbox(photo));
-  });
-
-  featuredPhotos.append(coverButton, notePanel);
+  featuredPhotos.append(coverLink, notePanel);
 }
 
-function renderFilters(items) {
-  const categories = ["All", ...new Set(items.map((photo) => photo.category).filter(Boolean))];
-  filters.innerHTML = "";
-
-  categories.forEach((category) => {
-    const button = document.createElement("button");
-    button.className = "filter-button";
-    button.type = "button";
-    button.textContent = category;
-    button.dataset.category = category;
-    if (category === "All") button.classList.add("active");
-
-    button.addEventListener("click", () => {
-      filters.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-      const filtered = category === "All" ? photos : photos.filter((photo) => photo.category === category);
-      renderGallery(filtered);
-    });
-
-    filters.appendChild(button);
-  });
-}
-
-function renderGallery(items) {
+function renderCollectionCards(items) {
   gallery.innerHTML = "";
 
   if (!items.length) {
-    gallery.innerHTML = "<p class='photo-fallback'>No photos are listed for this category yet.</p>";
+    gallery.innerHTML = "<p class='photo-fallback'>No collections are listed yet.</p>";
     return;
   }
 
-  items.forEach((photo) => {
-    const card = document.createElement("article");
-    card.className = "photo-card";
-
-    const button = document.createElement("button");
-    button.className = "photo-button";
-    button.type = "button";
-    button.addEventListener("click", () => {
-      window.location.href = `collection.html?photo=${photos.indexOf(photo)}`;
-    });
+  items.forEach((collection) => {
+    const collectionPhotos = getCollectionPhotos(collection.slug);
+    const card = document.createElement("a");
+    card.className = "collection-card";
+    card.href = `collection.html?collection=${encodeURIComponent(collection.slug)}`;
 
     const media = document.createElement("div");
-    media.className = "photo-media";
+    media.className = "collection-card-media";
 
     const image = document.createElement("img");
-    image.src = photo.image || "";
-    image.alt = photo.title || "Photography gallery image";
+    image.src = getCollectionCover(collection);
+    image.alt = collection.title || "Photography collection";
     image.loading = "lazy";
     image.addEventListener("error", () => {
-      media.innerHTML = `<span class="photo-fallback">${escapeHTML(photo.title || "Photo")}<br>Image coming soon</span>`;
+      media.innerHTML = `<span class="photo-fallback">${escapeHTML(collection.title || "Collection")}<br>Cover image coming soon</span>`;
     });
 
     media.appendChild(image);
 
     const body = document.createElement("div");
-    body.className = "photo-body";
+    body.className = "collection-card-body";
     body.innerHTML = `
-      <p class="photo-meta">${escapeHTML([photo.category, photo.location, photo.year].filter(Boolean).join(" | "))}</p>
-      <h3>${escapeHTML(photo.title || "Untitled")}</h3>
-      <p>${escapeHTML(photo.caption || "")}</p>
+      <p class="photo-meta">${escapeHTML(collection.theme || "Photo collection")} | ${collectionPhotos.length} ${collectionPhotos.length === 1 ? "photo" : "photos"}</p>
+      <h3>${escapeHTML(collection.title || "Untitled")}</h3>
+      <p>${escapeHTML(collection.description || "")}</p>
+      <span class="view-collection">View Collection</span>
     `;
 
-    button.append(media, body);
-    card.appendChild(button);
+    card.append(media, body);
     gallery.appendChild(card);
   });
 }
 
-function openLightbox(photo) {
-  lightboxImage.src = photo.image || "";
-  lightboxImage.alt = photo.title || "Photo preview";
-  lightboxTitle.textContent = photo.title || "Untitled";
-  lightboxMeta.textContent = [photo.category, photo.location, photo.year].filter(Boolean).join(" | ");
-  lightboxText.textContent = photo.caption || "";
-  lightbox.hidden = false;
-  document.body.style.overflow = "hidden";
+function getCollectionPhotos(slug) {
+  return photos.filter((photo) => photo.collection === slug);
 }
 
-function closeLightbox() {
-  lightbox.hidden = true;
-  lightboxImage.src = "";
-  document.body.style.overflow = "";
+function getCollectionCover(collection) {
+  const firstPhoto = getCollectionPhotos(collection.slug)[0];
+  return collection.coverImage || (firstPhoto && firstPhoto.image) || "";
 }
-
-lightboxClose.addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) closeLightbox();
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
-});
 
 function escapeHTML(value) {
   return String(value)

@@ -1,138 +1,138 @@
 [
   {
+    "collection": "landscape",
     "title": "Lake Michigan Sunrise",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Landscape",
     "caption": "Early light over Lake Michigan, with the shoreline reduced to quiet color and shape.",
-    "image": "assets/photos/sunrise.jpg"
+    "image": "assets/photos/landscape/lake-michigan-sunrise.jpg"
   },
   {
-    "title": "Sunset Through the City",
+    "collection": "city",
+    "title": "Sun Through the City",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "City",
     "caption": "Warm evening light cutting through the urban corridor.",
-    "image": "assets/photos/01_落日穿城.jpg"
+    "image": "assets/photos/city/sun-through-city.jpg"
   },
   {
+    "collection": "city",
     "title": "Winter Skyline",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "City",
     "caption": "A clear winter view of the Chicago skyline.",
-    "image": "assets/photos/02_冬日天际线.jpg"
+    "image": "assets/photos/city/winter-skyline.jpg"
   },
   {
+    "collection": "city",
     "title": "Cloud Gate Night",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "City",
     "caption": "Night reflections around Cloud Gate and the surrounding city lights.",
-    "image": "assets/photos/03_云门夜影.jpg"
+    "image": "assets/photos/city/cloud-gate-night.jpg"
   },
   {
+    "collection": "city",
     "title": "Chicago Theatre Night",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "City",
     "caption": "The theater sign and downtown street life after dark.",
-    "image": "assets/photos/04_芝城剧院之夜.jpg"
+    "image": "assets/photos/city/chicago-theatre-night.jpg"
   },
   {
+    "collection": "city",
     "title": "Mirrored Street Canyon",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "City",
     "caption": "Glass, steel, and layered reflections in the city.",
-    "image": "assets/photos/05_镜像街谷.jpg"
+    "image": "assets/photos/city/mirrored-street-canyon.jpg"
   },
   {
+    "collection": "wildlife",
     "title": "Lion Portrait",
     "location": "Lincoln Park Zoo, Chicago, IL",
     "year": "2026",
-    "category": "Wildlife",
     "caption": "A quiet portrait from Lincoln Park Zoo.",
-    "image": "assets/photos/DSC_3449.jpg"
+    "image": "assets/photos/wildlife/lion-portrait.jpg"
   },
   {
-    "title": "American Robin",
-    "location": "Chicago, IL",
-    "year": "2026",
-    "category": "Birds",
-    "caption": "A robin moving through low grass in soft light.",
-    "image": "assets/photos/DSC_3891-Enhanced-NR.jpg"
-  },
-  {
+    "collection": "wildlife",
     "title": "Bear at the Rock Wall",
     "location": "Lincoln Park Zoo, Chicago, IL",
     "year": "2026",
-    "category": "Wildlife",
     "caption": "A bear framed by textured stone and warm color.",
-    "image": "assets/photos/DSC_4015-Enhanced-NR.jpg"
+    "image": "assets/photos/wildlife/bear-at-rock-wall.jpg"
   },
   {
+    "collection": "wildlife",
     "title": "Primate Portrait",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Wildlife",
     "caption": "A close portrait with gesture, texture, and expression.",
-    "image": "assets/photos/DSC_4046-Enhanced-NR.jpg"
+    "image": "assets/photos/wildlife/primate-portrait.jpg"
   },
   {
+    "collection": "birds",
+    "title": "American Robin",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "caption": "A robin moving through low grass in soft light.",
+    "image": "assets/photos/birds/american-robin.jpg"
+  },
+  {
+    "collection": "birds",
     "title": "Bird in Green Light",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Birds",
     "caption": "A small bird held briefly by leaves and light.",
-    "image": "assets/photos/DSC_4127-Enhanced-NR.jpg"
+    "image": "assets/photos/birds/bird-in-green-light.jpg"
   },
   {
+    "collection": "birds",
     "title": "Robin in the Grass",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Birds",
     "caption": "A robin standing alert in a patch of green.",
-    "image": "assets/photos/DSC_4156-Enhanced-NR.jpg"
+    "image": "assets/photos/birds/robin-in-grass.jpg"
   },
   {
+    "collection": "birds",
     "title": "Branch Study I",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Birds",
     "caption": "A small bird balanced among branches.",
-    "image": "assets/photos/DSC_4174-Enhanced-NR.jpg"
+    "image": "assets/photos/birds/branch-study-i.jpg"
   },
   {
+    "collection": "birds",
     "title": "Branch Study II",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Birds",
     "caption": "A second quiet frame from the same walk.",
-    "image": "assets/photos/DSC_4176-Enhanced-NR_1.jpg"
+    "image": "assets/photos/birds/branch-study-ii.jpg"
   },
   {
+    "collection": "birds",
     "title": "Woodpecker",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Birds",
     "caption": "A woodpecker set against layered green foliage.",
-    "image": "assets/photos/DSC_4217-Enhanced-NR.jpg"
+    "image": "assets/photos/birds/woodpecker.jpg"
   },
   {
+    "collection": "birds",
     "title": "Cardinal I",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Birds",
     "caption": "A bright cardinal perched in winter branches.",
-    "image": "assets/photos/DSC_4235-Enhanced-NR.jpg"
+    "image": "assets/photos/birds/cardinal-i.jpg"
   },
   {
+    "collection": "birds",
     "title": "Cardinal II",
     "location": "Chicago, IL",
     "year": "2026",
-    "category": "Birds",
     "caption": "A second cardinal frame with strong color and stillness.",
-    "image": "assets/photos/DSC_4237-Enhanced-NR.jpg"
+    "image": "assets/photos/birds/cardinal-ii.jpg"
   }
 ]
