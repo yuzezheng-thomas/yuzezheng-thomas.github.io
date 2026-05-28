@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Academic profile and photography gallery for Yuze Zheng.">
+    <title>Yuze Zheng / Thomas</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- After setup, index.html should rarely need to be edited.
+      Personal information lives in data/profile.json.
+      Photography entries live in data/photos.json.
+      Photo files go in assets/photos/.
+      CV files go in assets/cv/.
+    -->
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#home" data-profile="name">Yuze Zheng</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#cv">CV</a>
+          <a href="#photography">Photography</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero section">
+        <div class="hero-content">
+          <p class="eyebrow" data-profile="affiliation">University of Chicago</p>
+          <h1 data-profile="displayName">Yuze Zheng / Thomas</h1>
+          <p class="hero-title" data-profile="title">PhD Candidate in Chemistry</p>
+          <p class="hero-intro" data-profile="shortIntro"></p>
+          <div class="button-row">
+            <a class="button primary" href="#cv">View CV</a>
+            <a class="button" href="#photography">View Photography</a>
+            <a class="button ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Research Profile</h2>
+        </div>
+        <div class="about-layout">
+          <div class="prose" id="biography"></div>
+          <aside class="info-panel">
+            <h3>Research Interests</h3>
+            <ul class="tag-list" id="about-interests"></ul>
+            <h3>Personal Interests</h3>
+            <ul class="plain-list" id="personal-interests"></ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="cv" class="section band">
+        <div class="section-heading">
+          <p class="eyebrow">CV</p>
+          <h2>Academic Summary</h2>
+        </div>
+        <div class="cv-grid">
+          <article class="card">
+            <h3>Education</h3>
+            <div id="education-list"></div>
+          </article>
+          <article class="card">
+            <h3>Research Interests</h3>
+            <ul class="tag-list" id="cv-interests"></ul>
+          </article>
+          <article class="card wide">
+            <h3>Selected Research Directions</h3>
+            <div class="direction-grid" id="research-directions"></div>
+          </article>
+          <article class="card">
+            <h3>Academic Links</h3>
+            <div class="link-list" id="academic-links"></div>
+            <a class="button primary cv-button" id="cv-download" href="assets/cv/Yuze_Zheng_CV.pdf">Download CV</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="photography" class="section">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Photography</p>
+            <h2>Gallery</h2>
+          </div>
+          <div class="filter-bar" id="photo-filters" aria-label="Photography category filters"></div>
+        </div>
+        <div class="gallery" id="gallery" aria-live="polite"></div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Get in Touch</h2>
+        </div>
+        <p class="contact-copy">
+          For research conversations, collaboration inquiries, or photography-related notes, please use one of the links below.
+        </p>
+        <div class="contact-links" id="contact-links"></div>
+      </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" hidden>
+      <button class="lightbox-close" type="button" aria-label="Close photo preview">&times;</button>
+      <div class="lightbox-content">
+        <img id="lightbox-image" alt="">
+        <div class="lightbox-caption">
+          <h3 id="lightbox-title"></h3>
+          <p id="lightbox-meta"></p>
+          <p id="lightbox-text"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

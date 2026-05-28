@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Lake Michigan Sunrise",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "category": "Landscape",
+    "caption": "Early light over Lake Michigan, with the shoreline reduced to quiet color and shape.",
+    "image": "assets/photos/photo-01.jpg"
+  },
+  {
+    "title": "Montrose Point Bird Sanctuary",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "category": "Birds",
+    "caption": "A field note from one of Chicago's most active birding locations.",
+    "image": "assets/photos/photo-02.jpg"
+  },
+  {
+    "title": "Lincoln Park Zoo",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "category": "Wildlife",
+    "caption": "A quiet portrait from a familiar urban wildlife setting.",
+    "image": "assets/photos/photo-03.jpg"
+  },
+  {
+    "title": "Chicago Street Scene",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "category": "Street",
+    "caption": "Everyday movement, architecture, and light in the city.",
+    "image": "assets/photos/photo-04.jpg"
+  }
+]
