@@ -110,8 +110,8 @@ img {
 
 .hero {
   position: relative;
-  min-height: calc(100vh - 66px);
-  padding: 22px;
+  min-height: auto;
+  padding: 18px 24px 34px;
 }
 
 .eyebrow {
@@ -235,10 +235,13 @@ h3 {
 .photo-collage {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(8, minmax(58px, 1fr));
+  grid-template-rows: repeat(6, minmax(54px, 1fr));
   gap: 10px;
   width: 100%;
-  min-height: calc(100vh - 110px);
+  max-width: var(--max-width);
+  min-height: 0;
+  height: min(680px, calc(100vh - 132px));
+  margin: 0 auto;
 }
 
 .collage-tile {
@@ -271,7 +274,7 @@ h3 {
 
 .tile-1 {
   grid-column: 1 / span 4;
-  grid-row: 1 / span 5;
+  grid-row: 1 / span 4;
 }
 
 .tile-2 {
@@ -281,32 +284,32 @@ h3 {
 
 .tile-3 {
   grid-column: 9 / span 4;
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 3;
 }
 
 .tile-4 {
   grid-column: 5 / span 3;
-  grid-row: 4 / span 5;
+  grid-row: 4 / span 3;
 }
 
 .tile-5 {
   grid-column: 8 / span 5;
-  grid-row: 5 / span 4;
+  grid-row: 4 / span 3;
 }
 
 .tile-6 {
   grid-column: 1 / span 2;
-  grid-row: 6 / span 3;
+  grid-row: 5 / span 2;
 }
 
 .tile-7 {
   grid-column: 3 / span 2;
-  grid-row: 6 / span 3;
+  grid-row: 5 / span 2;
 }
 
 .tile-8 {
   grid-column: 8 / span 1;
-  grid-row: 4 / span 1;
+  grid-row: 3 / span 1;
 }
 
 .tile-8 img {
