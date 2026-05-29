@@ -117,14 +117,20 @@ function renderLinks(selector, links) {
   const container = document.querySelector(selector);
   container.innerHTML = "";
   links.forEach((link) => {
+    const url = link.url || "#";
     const anchor = document.createElement("a");
-    anchor.href = link.url || "#";
+    anchor.href = url;
     anchor.className = "contact-link";
     anchor.innerHTML = `
       <span class="contact-icon" aria-hidden="true">${getContactIcon(link.label || "")}</span>
       <span>${escapeHTML(link.label || "Link")}</span>
     `;
-    if ((link.url || "").startsWith("http")) {
+    if (url.startsWith("mailto:")) {
+      anchor.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = url;
+      });
+    } else if (url.startsWith("http")) {
       anchor.target = "_blank";
       anchor.rel = "noopener noreferrer";
     }
