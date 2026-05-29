@@ -706,9 +706,9 @@ h3 {
   margin: 0 0 8px;
   color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.28rem, 2vw, 1.72rem);
+  font-size: clamp(1.08rem, 1.55vw, 1.38rem);
   font-weight: 520;
-  line-height: 1.08;
+  line-height: 1.12;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
