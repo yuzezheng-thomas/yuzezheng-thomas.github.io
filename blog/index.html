@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Photography journal and field notes by Yuze Zheng.">
+    <title>Blog | Yuze Zheng Photography</title>
+    <link rel="stylesheet" href="../style.css?v=20260529-blog">
+  </head>
+  <body class="blog-page">
+    <!-- Blog previews are edited in ../data/blogPosts.json.
+      Blog cover images can live in ../assets/images/blog/ or reuse existing ../assets/photos/ images.
+      Add full article pages under posts/.
+    -->
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../index.html#home">Yuze Zheng</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="../index.html#home">Home</a>
+          <a href="../index.html#about">Behind the Camera</a>
+          <a href="../index.html#photography">Photography</a>
+          <a href="index.html">Blog</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section blog-index-header">
+        <p class="eyebrow">Journal</p>
+        <h1>Blog</h1>
+        <p class="blog-intro">Photography notes, field records, travel observations, and short essays on light, place, and process.</p>
+        <div class="blog-filter-bar" id="blog-filter-bar" aria-label="Blog categories"></div>
+      </section>
+
+      <section class="section blog-list-section">
+        <div class="blog-preview-grid blog-index-grid" id="blog-posts" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="blog.js?v=20260529-blog"></script>
+  </body>
+</html>

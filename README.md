@@ -8,7 +8,9 @@ Most updates should happen in these places:
 - `data/featuredPhotos.json`
 - `data/collections.json`
 - `data/photos.json`
+- `data/blogPosts.json`
 - `assets/photos/`
+- `assets/images/blog/`
 
 ## Update Personal Text
 
@@ -91,6 +93,53 @@ If `coverImage` is empty or missing, the site uses the first photo in `data/phot
 - Long edge: 1600-2400 px
 - Quality: 75-85%
 - Ideally 300 KB-1 MB per image
+
+## Update The Blog
+
+The Blog overview page is `blog/index.html`. It displays preview blocks from `data/blogPosts.json`.
+
+Each preview entry controls the cover image, title, category, date, location, and article link:
+
+```json
+{
+  "title": "Morning Light Along Lake Michigan",
+  "category": "Travel Journal",
+  "location": "Chicago",
+  "date": "26 May 2026",
+  "coverImage": "assets/images/blog/lake-michigan-morning.jpg",
+  "coverAlt": "Morning light along Lake Michigan",
+  "url": "blog/posts/morning-light-lake-michigan.html"
+}
+```
+
+The supported categories are:
+
+- `Travel Journal`
+- `Street Notes`
+- `Camera & Lens`
+- `Location Guide`
+
+## Add A New Blog Post
+
+1. Put blog images in `assets/images/blog/`. You can also reuse images already in `assets/photos/`.
+2. Copy one existing file from `blog/posts/`.
+3. Rename it, for example `blog/posts/new-photo-walk.html`.
+4. Edit the title, metadata, paragraphs, image paths, and captions in that HTML file.
+5. Add one matching preview entry to `data/blogPosts.json`.
+6. Commit changes.
+7. GitHub Pages updates automatically.
+
+Blog links are normal relative paths. For example, a preview with this value:
+
+```text
+blog/posts/new-photo-walk.html
+```
+
+opens this article page:
+
+```text
+blog/posts/new-photo-walk.html
+```
 
 ## GitHub Pages Notes
 

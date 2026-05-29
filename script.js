@@ -2,6 +2,7 @@
 // Collection cards are edited in data/collections.json.
 // Photo entries are edited in data/photos.json.
 // Homepage collage entries are edited in data/featuredPhotos.json.
+// Blog preview entries are edited in data/blogPosts.json.
 // Photo files go in collection folders under assets/photos/.
 // index.html should rarely need to be edited after setup.
 
@@ -10,12 +11,14 @@ const profilePath = `data/profile.json?v=${cacheKey}`;
 const collectionsPath = `data/collections.json?v=${cacheKey}`;
 const photosPath = `data/photos.json?v=${cacheKey}`;
 const featuredPhotosPath = `data/featuredPhotos.json?v=${cacheKey}`;
+const blogPostsPath = `data/blogPosts.json?v=${cacheKey}`;
 
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const photoCollage = document.querySelector("#photo-collage");
 const gallery = document.querySelector("#gallery");
 const aboutProfile = document.querySelector("#about-profile");
+const latestBlog = document.querySelector("#latest-blog");
 
 let collections = [];
 let photos = [];
@@ -25,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadProfile();
   loadFeaturedPhotos();
   loadPortfolioData();
+  loadLatestBlog();
 });
 
 function setupNavigation() {
@@ -271,6 +275,63 @@ function renderCollectionCards(items) {
     card.append(media, body);
     gallery.appendChild(card);
   });
+}
+
+async function loadLatestBlog() {
+  if (!latestBlog) return;
+
+  try {
+    const response = await fetch(blogPostsPath);
+    if (!response.ok) throw new Error("Blog post file could not be loaded.");
+    const posts = await response.json();
+    renderBlogPreviews(latestBlog, posts.slice(0, 4), "");
+  } catch (error) {
+    console.error(error);
+    latestBlog.innerHTML = "<p class='photo-fallback'>Blog posts could not be loaded.</p>";
+  }
+}
+
+function renderBlogPreviews(container, posts, pathPrefix) {
+  container.innerHTML = "";
+
+  posts.forEach((post) => {
+    const article = document.createElement("article");
+    article.className = "blog-preview";
+
+    const link = document.createElement("a");
+    link.href = `${pathPrefix}${post.url || "#"}`;
+    link.className = "blog-preview-link";
+
+    const media = document.createElement("div");
+    media.className = "blog-preview-image";
+
+    const image = document.createElement("img");
+    image.src = post.coverImage || "";
+    image.alt = post.coverAlt || post.title || "Blog cover image";
+    image.loading = "lazy";
+    image.addEventListener("error", () => {
+      media.innerHTML = `<span>${escapeHTML(post.coverAlt || "Image coming soon")}</span>`;
+      media.classList.add("missing-image");
+    });
+
+    media.appendChild(image);
+    link.appendChild(media);
+
+    const title = document.createElement("h3");
+    title.textContent = post.title || "Untitled";
+    link.appendChild(title);
+
+    const meta = document.createElement("p");
+    meta.className = "blog-meta";
+    meta.textContent = formatBlogMeta(post);
+
+    article.append(link, meta);
+    container.appendChild(article);
+  });
+}
+
+function formatBlogMeta(post) {
+  return [post.category, post.location, post.date].filter(Boolean).join(" · ").toUpperCase();
 }
 
 function getCollectionPhotos(slug) {

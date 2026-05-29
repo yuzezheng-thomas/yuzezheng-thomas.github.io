@@ -588,6 +588,214 @@ h3 {
   font-weight: 850;
 }
 
+.latest-blog-section,
+.blog-page {
+  background: #fffaf4;
+}
+
+.text-link {
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration-color: var(--accent-three);
+  text-underline-offset: 5px;
+}
+
+.blog-index-header {
+  padding-bottom: 32px;
+}
+
+.blog-index-header h1,
+.blog-post-header h1 {
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 520;
+  letter-spacing: 0;
+}
+
+.blog-intro {
+  max-width: 640px;
+  margin: 20px 0 30px;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.blog-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.blog-filter-button {
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  padding: 4px 0;
+  text-transform: uppercase;
+}
+
+.blog-filter-button[aria-pressed="true"],
+.blog-filter-button:hover,
+.blog-filter-button:focus {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.blog-list-section {
+  padding-top: 10px;
+}
+
+.blog-preview-grid {
+  display: grid;
+  gap: 46px 34px;
+}
+
+.blog-index-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.latest-blog-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.blog-preview {
+  min-width: 0;
+}
+
+.blog-preview-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-preview-image {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 3px;
+  background:
+    linear-gradient(135deg, rgba(255, 92, 53, 0.24), rgba(0, 127, 140, 0.2)),
+    #f4eee7;
+  color: var(--muted);
+}
+
+.blog-preview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 160ms ease;
+}
+
+.blog-preview-link:hover img,
+.blog-preview-link:focus img {
+  opacity: 0.82;
+}
+
+.blog-preview h2,
+.blog-preview h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0 0 8px;
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.28rem, 2vw, 1.72rem);
+  font-weight: 520;
+  line-height: 1.08;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.blog-preview-link:hover h2,
+.blog-preview-link:focus h2,
+.blog-preview-link:hover h3,
+.blog-preview-link:focus h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.blog-meta {
+  margin: 0;
+  color: rgba(110, 102, 112, 0.76);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.blog-post {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+.blog-post-header {
+  max-width: 820px;
+  margin: 0 auto 34px;
+}
+
+.blog-post-header h1 {
+  max-width: 820px;
+  margin-top: 12px;
+  font-size: clamp(2.7rem, 6vw, 5.4rem);
+}
+
+.blog-hero-image,
+.blog-wide-image {
+  margin: 0 auto 34px;
+}
+
+.blog-hero-image {
+  max-width: 1120px;
+}
+
+.blog-wide-image {
+  max-width: 980px;
+}
+
+.blog-hero-image img,
+.blog-wide-image img {
+  width: 100%;
+  max-height: 72vh;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.blog-hero-image img {
+  aspect-ratio: 16 / 9;
+}
+
+.blog-wide-image img {
+  aspect-ratio: 4 / 3;
+}
+
+.blog-hero-image figcaption,
+.blog-wide-image figcaption {
+  margin-top: 9px;
+  color: rgba(110, 102, 112, 0.78);
+  font-size: 0.82rem;
+}
+
+.blog-post-body {
+  max-width: 700px;
+  margin: 0 auto 38px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.blog-post-body p {
+  margin: 0 0 20px;
+}
+
 .photo-card {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -999,6 +1207,11 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .blog-index-grid,
+  .latest-blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about-layout {
     grid-template-columns: 1fr;
   }
@@ -1107,6 +1320,23 @@ h3 {
 
   .collection-card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .blog-index-grid,
+  .latest-blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-preview-grid {
+    gap: 38px;
+  }
+
+  .blog-post {
+    padding: 42px 18px 72px;
+  }
+
+  .blog-post-header h1 {
+    font-size: clamp(2.4rem, 13vw, 3.9rem);
   }
 
   .portrait-panel {

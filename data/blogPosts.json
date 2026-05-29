@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Morning Light Along Lake Michigan",
+    "category": "Travel Journal",
+    "location": "Chicago",
+    "date": "26 May 2026",
+    "coverImage": "assets/photos/landscape/lake-michigan-sunrise.jpg",
+    "coverAlt": "Sunrise over Lake Michigan",
+    "url": "blog/posts/morning-light-lake-michigan.html"
+  },
+  {
+    "title": "A Warm Corridor Through Downtown",
+    "category": "Street Notes",
+    "location": "Chicago",
+    "date": "21 May 2026",
+    "coverImage": "assets/photos/city/sun-through-city.jpg",
+    "coverAlt": "Sunlight through downtown Chicago",
+    "url": "blog/posts/warm-corridor-downtown.html"
+  },
+  {
+    "title": "Notes On Carrying A Camera Every Day",
+    "category": "Camera & Lens",
+    "location": "Field Notes",
+    "date": "9 May 2026",
+    "coverImage": "assets/photos/city/DSC_1120.jpg",
+    "coverAlt": "Urban light and camera walk",
+    "url": "blog/posts/carrying-a-camera-every-day.html"
+  },
+  {
+    "title": "Montrose Point As A Birding Walk",
+    "category": "Location Guide",
+    "location": "Montrose Point",
+    "date": "18 May 2026",
+    "coverImage": "assets/photos/birds/warbler.jpg",
+    "coverAlt": "Warbler on branches",
+    "url": "blog/posts/montrose-point-birding-walk.html"
+  }
+]
