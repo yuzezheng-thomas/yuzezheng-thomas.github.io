@@ -8,6 +8,38 @@
     "image": "assets/photos/landscape/lake-michigan-sunrise.jpg"
   },
   {
+    "collection": "landscape",
+    "title": "Alaska",
+    "location": "Alaska",
+    "year": "2026",
+    "caption": "A snow-covered road leading toward distant mountain light.",
+    "image": "assets/photos/landscape/DSC_5623-Enhanced-NR.jpg"
+  },
+  {
+    "collection": "landscape",
+    "title": "Tengchong Volcano",
+    "location": "Tengchong, Yunnan",
+    "year": "2026",
+    "caption": "A broad volcanic landscape seen from above.",
+    "image": "assets/photos/landscape/DJI_0102-Enhanced-NR_1.jpg"
+  },
+  {
+    "collection": "landscape",
+    "title": "Landscape Study I",
+    "location": "",
+    "year": "2026",
+    "caption": "A quiet landscape frame shaped by light, distance, and atmosphere.",
+    "image": "assets/photos/landscape/DSC_0870-Enhanced-NR_1.jpg"
+  },
+  {
+    "collection": "landscape",
+    "title": "Landscape Study II",
+    "location": "",
+    "year": "2026",
+    "caption": "A second landscape study with soft color and open space.",
+    "image": "assets/photos/landscape/DSC_0913_1.jpg"
+  },
+  {
     "collection": "city",
     "title": "Sun Through the City",
     "location": "Chicago, IL",
@@ -46,6 +78,46 @@
     "year": "2026",
     "caption": "Glass, steel, and layered reflections in the city.",
     "image": "assets/photos/city/mirrored-street-canyon.jpg"
+  },
+  {
+    "collection": "city",
+    "title": "Chicago Lighthouse",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "caption": "A lighthouse framed by lakefront light and open water.",
+    "image": "assets/photos/city/DSC_1145.jpg"
+  },
+  {
+    "collection": "city",
+    "title": "City Frame I",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "caption": "An urban frame of structure, light, and street detail.",
+    "image": "assets/photos/city/DSC_1120.jpg"
+  },
+  {
+    "collection": "city",
+    "title": "City Frame II",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "caption": "A city scene with layered architecture and evening color.",
+    "image": "assets/photos/city/DSC_4291.jpg"
+  },
+  {
+    "collection": "city",
+    "title": "City Frame III",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "caption": "Street light, reflections, and downtown movement.",
+    "image": "assets/photos/city/DSC_4300.jpg"
+  },
+  {
+    "collection": "city",
+    "title": "City Frame IV",
+    "location": "Chicago, IL",
+    "year": "2026",
+    "caption": "A vertical city study with warm light and architectural rhythm.",
+    "image": "assets/photos/city/DSC_4327.jpg"
   },
   {
     "collection": "wildlife",
